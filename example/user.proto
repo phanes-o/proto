@@ -3,7 +3,7 @@ package primitive;
 
 //option go_package = "pb/example";
 
-import "primitive/primitive.proto";
+import "proto/primitive/primitive.proto";
 
 service User {
   rpc Create(CreateUserRequest) returns (primitive.Empty);

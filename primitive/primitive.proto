@@ -1,10 +1,7 @@
 syntax = "proto3";
 package primitive;
 
-
-
-message Empty {
-}
+message Empty {}
 
 message String {
     string Value = 1;

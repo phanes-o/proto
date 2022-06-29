@@ -1,4 +1,4 @@
-module github.com/phanes-o/proto
+module proto
 
 go 1.17
 
