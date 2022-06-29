@@ -3,7 +3,7 @@ package example;
 
 option go_package = "github.com/phanes-o/proto/example";
 
-import "proto/primitive/primitive.proto";
+import "proto/base/primitive.proto";
 import "proto/dto/user.proto";
 
 service User {

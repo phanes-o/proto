@@ -5,8 +5,8 @@ package example
 
 import (
 	fmt "fmt"
+	base "github.com/phanes-o/proto/base"
 	dto "github.com/phanes-o/proto/dto"
-	primitive "github.com/phanes-o/proto/primitive"
 	proto "google.golang.org/protobuf/proto"
 	math "math"
 )
@@ -38,8 +38,8 @@ func NewUserEndpoints() []*api.Endpoint {
 // Client API for User service
 
 type UserService interface {
-	Create(ctx context.Context, in *dto.CreateUserRequest, opts ...client.CallOption) (*primitive.Empty, error)
-	Delete(ctx context.Context, in *primitive.Int64, opts ...client.CallOption) (*primitive.Empty, error)
+	Create(ctx context.Context, in *dto.CreateUserRequest, opts ...client.CallOption) (*base.Empty, error)
+	Delete(ctx context.Context, in *base.Int64, opts ...client.CallOption) (*base.Empty, error)
 }
 
 type userService struct {
@@ -54,9 +54,9 @@ func NewUserService(name string, c client.Client) UserService {
 	}
 }
 
-func (c *userService) Create(ctx context.Context, in *dto.CreateUserRequest, opts ...client.CallOption) (*primitive.Empty, error) {
+func (c *userService) Create(ctx context.Context, in *dto.CreateUserRequest, opts ...client.CallOption) (*base.Empty, error) {
 	req := c.c.NewRequest(c.name, "User.Create", in)
-	out := new(primitive.Empty)
+	out := new(base.Empty)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
 		return nil, err
@@ -64,9 +64,9 @@ func (c *userService) Create(ctx context.Context, in *dto.CreateUserRequest, opt
 	return out, nil
 }
 
-func (c *userService) Delete(ctx context.Context, in *primitive.Int64, opts ...client.CallOption) (*primitive.Empty, error) {
+func (c *userService) Delete(ctx context.Context, in *base.Int64, opts ...client.CallOption) (*base.Empty, error) {
 	req := c.c.NewRequest(c.name, "User.Delete", in)
-	out := new(primitive.Empty)
+	out := new(base.Empty)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
 		return nil, err
@@ -77,14 +77,14 @@ func (c *userService) Delete(ctx context.Context, in *primitive.Int64, opts ...c
 // Server API for User service
 
 type UserHandler interface {
-	Create(context.Context, *dto.CreateUserRequest, *primitive.Empty) error
-	Delete(context.Context, *primitive.Int64, *primitive.Empty) error
+	Create(context.Context, *dto.CreateUserRequest, *base.Empty) error
+	Delete(context.Context, *base.Int64, *base.Empty) error
 }
 
 func RegisterUserHandler(s server.Server, hdlr UserHandler, opts ...server.HandlerOption) error {
 	type user interface {
-		Create(ctx context.Context, in *dto.CreateUserRequest, out *primitive.Empty) error
-		Delete(ctx context.Context, in *primitive.Int64, out *primitive.Empty) error
+		Create(ctx context.Context, in *dto.CreateUserRequest, out *base.Empty) error
+		Delete(ctx context.Context, in *base.Int64, out *base.Empty) error
 	}
 	type User struct {
 		user
@@ -97,10 +97,10 @@ type userHandler struct {
 	UserHandler
 }
 
-func (h *userHandler) Create(ctx context.Context, in *dto.CreateUserRequest, out *primitive.Empty) error {
+func (h *userHandler) Create(ctx context.Context, in *dto.CreateUserRequest, out *base.Empty) error {
 	return h.UserHandler.Create(ctx, in, out)
 }
 
-func (h *userHandler) Delete(ctx context.Context, in *primitive.Int64, out *primitive.Empty) error {
+func (h *userHandler) Delete(ctx context.Context, in *base.Int64, out *base.Empty) error {
 	return h.UserHandler.Delete(ctx, in, out)
 }
