@@ -7,8 +7,8 @@ import "proto/base/primitive.proto";
 import "proto/dto/user.proto";
 
 service User {
-  rpc Create(dto.CreateUserRequest) returns (primitive.Empty);
-  rpc Delete(primitive.Int64) returns (primitive.Empty);
+  rpc Create(dto.CreateUserRequest) returns (base.Empty);
+  rpc Delete(base.Int64) returns (base.Empty);
 }
 
 

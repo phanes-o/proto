@@ -1,5 +1,5 @@
 syntax = "proto3";
-package primitive;
+package base;
 
 option go_package = "github.com/phanes-o/proto/base";
 
