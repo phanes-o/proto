@@ -1,7 +1,7 @@
 syntax = "proto3";
 package primitive;
 
-option go_package = "/pb/example";
+option go_package = "pb/example";
 
 import "primitive/primitive.proto";
 
