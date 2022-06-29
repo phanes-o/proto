@@ -1,4 +1,4 @@
-module github.com/phanes-o/proto
+module github.com/phanes-o/proto/pb
 
 go 1.17
 
