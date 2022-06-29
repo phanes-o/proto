@@ -1,6 +1,8 @@
 syntax = "proto3";
 package primitive;
 
+option go_package = "github.com/phanes-o/proto/primitive";
+
 message Empty {}
 
 message String {

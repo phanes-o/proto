@@ -8,12 +8,13 @@ function read_dir(){
         then
             if [[ $file != '.' && $file != '..' && $file != '.git' ]]
             then
-                read_dir $1"/"$file $1
+              read_dir $1"/"$file $1
             fi
         else
           if [[ "${file##*.}"x == 'proto'x ]]
           then
-              protoc -I=$(dirname $2) --go_out=$work_path --micro_out=$work_path $1"/"$file
+              echo $2
+              protoc -I=$(dirname $2) --go_out=paths=source_relative:../ --micro_out=paths=source_relative:../ $1"/"$file
           fi
         fi
     done
