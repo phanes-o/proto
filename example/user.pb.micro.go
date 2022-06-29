@@ -7,7 +7,7 @@ import (
 	fmt "fmt"
 	proto "google.golang.org/protobuf/proto"
 	math "math"
-	primitive "pb/primitive"
+	primitive "primitive"
 )
 
 import (
