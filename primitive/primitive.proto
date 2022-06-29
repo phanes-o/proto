@@ -1,0 +1,125 @@
+syntax = "proto3";
+package primitive;
+
+option go_package = "pb/primitive";
+
+
+message Empty {
+}
+
+message String {
+    string Value = 1;
+}
+
+message Strings {
+    repeated string Items = 1;
+}
+
+message TimeSpanOptions {
+    bool Valid = 1;
+    int64 Start = 2;
+    int64 End = 3;
+}
+
+message StringOption {
+    string Value = 1;
+    bool Valid = 2;
+}
+
+message StringsOption {
+    repeated string Items = 1;
+    bool Valid = 2;
+}
+
+message Int32 {
+    int32 Value = 1;
+}
+
+message Int32s {
+    repeated int32 Items = 1;
+}
+
+message Int32Option {
+    int32 Value = 1;
+    bool Valid = 2;
+}
+
+message Int64 {
+    int64 Value = 1;
+}
+
+message Int64s {
+    repeated int64 Items = 1;
+}
+
+message Int64Option {
+    int64 Value = 1;
+    bool Valid = 2;
+}
+
+message Float {
+    float Value = 1;
+}
+
+message Floats {
+    repeated float Items = 1;
+}
+
+message FloatOption {
+    float Value = 1;
+    bool Valid = 2;
+}
+
+message Double {
+    double Value = 1;
+}
+
+message Doubles {
+    repeated double Items = 1;
+}
+
+message DoubleOption {
+    double Value = 1;
+    bool Valid = 2;
+}
+
+message Bool {
+    bool Value = 1;
+}
+
+message Bools {
+    repeated bool Items = 1;
+}
+
+message BoolOption {
+    bool Value = 1;
+    bool Valid = 2;
+}
+
+message Bytes {
+    bytes Value = 1;
+}
+
+message Byteses {
+    repeated bytes Items = 1;
+}
+
+message BytesOption {
+    bytes Value = 1;
+    bool Valid = 2;
+}
+
+message KVStringAtString {
+    string Key = 1;
+    string Value = 2;
+}
+
+message KVInt64AtString {
+    int64 Key = 1;
+    string Value = 2;
+}
+
+message KVInt64AtInt64s {
+    int64 Key = 1;
+    repeated int64 Values = 2;
+}

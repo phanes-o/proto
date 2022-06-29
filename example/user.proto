@@ -1,0 +1,18 @@
+syntax = "proto3";
+package primitive;
+
+option go_package = "/pb/example";
+
+import "primitive/primitive.proto";
+
+service User {
+  rpc Create(CreateUserRequest) returns (primitive.Empty);
+  rpc Delete(primitive.Int64) returns (primitive.Empty);
+}
+
+
+
+message CreateUserRequest {
+  string username = 1;
+  string password = 2;
+}
