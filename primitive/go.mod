@@ -1,4 +1,4 @@
-module primitive
+module github.com/phanes-o/proto/primitive
 
 go 1.18
 

@@ -1,4 +1,4 @@
-module example
+module github.com/phanes-o/proto/example
 
 go 1.17
 
