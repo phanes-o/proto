@@ -1,7 +1,6 @@
 syntax = "proto3";
 package primitive;
 
-option go_package = "pb/primitive";
 
 
 message Empty {
