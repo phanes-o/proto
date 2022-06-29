@@ -1,0 +1,9 @@
+syntax = "proto3";
+package dto;
+
+option go_package = "github.com/phanes-o/proto/dto";
+
+message CreateUserRequest {
+  string username = 1;
+  string password = 2;
+}

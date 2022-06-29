@@ -5,6 +5,7 @@ package example
 
 import (
 	fmt "fmt"
+	dto "github.com/phanes-o/proto/dto"
 	primitive "github.com/phanes-o/proto/primitive"
 	proto "google.golang.org/protobuf/proto"
 	math "math"
@@ -37,7 +38,7 @@ func NewUserEndpoints() []*api.Endpoint {
 // Client API for User service
 
 type UserService interface {
-	Create(ctx context.Context, in *CreateUserRequest, opts ...client.CallOption) (*primitive.Empty, error)
+	Create(ctx context.Context, in *dto.CreateUserRequest, opts ...client.CallOption) (*primitive.Empty, error)
 	Delete(ctx context.Context, in *primitive.Int64, opts ...client.CallOption) (*primitive.Empty, error)
 }
 
@@ -53,7 +54,7 @@ func NewUserService(name string, c client.Client) UserService {
 	}
 }
 
-func (c *userService) Create(ctx context.Context, in *CreateUserRequest, opts ...client.CallOption) (*primitive.Empty, error) {
+func (c *userService) Create(ctx context.Context, in *dto.CreateUserRequest, opts ...client.CallOption) (*primitive.Empty, error) {
 	req := c.c.NewRequest(c.name, "User.Create", in)
 	out := new(primitive.Empty)
 	err := c.c.Call(ctx, req, out, opts...)
@@ -76,13 +77,13 @@ func (c *userService) Delete(ctx context.Context, in *primitive.Int64, opts ...c
 // Server API for User service
 
 type UserHandler interface {
-	Create(context.Context, *CreateUserRequest, *primitive.Empty) error
+	Create(context.Context, *dto.CreateUserRequest, *primitive.Empty) error
 	Delete(context.Context, *primitive.Int64, *primitive.Empty) error
 }
 
 func RegisterUserHandler(s server.Server, hdlr UserHandler, opts ...server.HandlerOption) error {
 	type user interface {
-		Create(ctx context.Context, in *CreateUserRequest, out *primitive.Empty) error
+		Create(ctx context.Context, in *dto.CreateUserRequest, out *primitive.Empty) error
 		Delete(ctx context.Context, in *primitive.Int64, out *primitive.Empty) error
 	}
 	type User struct {
@@ -96,7 +97,7 @@ type userHandler struct {
 	UserHandler
 }
 
-func (h *userHandler) Create(ctx context.Context, in *CreateUserRequest, out *primitive.Empty) error {
+func (h *userHandler) Create(ctx context.Context, in *dto.CreateUserRequest, out *primitive.Empty) error {
 	return h.UserHandler.Create(ctx, in, out)
 }
 
