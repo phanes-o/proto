@@ -13,7 +13,6 @@ function read_dir(){
         else
           if [[ "${file##*.}"x == 'proto'x ]]
           then
-              echo $2
               protoc -I=$(dirname $2) --go_out=paths=source_relative:../ --micro_out=paths=source_relative:../ $1"/"$file
           fi
         fi
